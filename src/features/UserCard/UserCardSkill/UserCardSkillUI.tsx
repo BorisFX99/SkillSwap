@@ -16,7 +16,8 @@ const CATEGORY_CLASS_MAP: Record<number, string> = {
 
 export const UserCardSkillUI: FC<TUserCardSkillUIProps> = ({
   title,
-  skills
+  skills,
+  cardRef
 }: TUserCardSkillUIProps) => {
   const listRef = useRef<HTMLUListElement | null>(null);
   const counterRef = useRef<HTMLLIElement | null>(null);
@@ -106,7 +107,7 @@ export const UserCardSkillUI: FC<TUserCardSkillUIProps> = ({
 
         {hiddenCount > 0 && (
           <li>
-            <UserCardSkillCounter counter={hiddenCount} skills={skills} visibleSkills={visibleSkills}/>
+            <UserCardSkillCounter counter={hiddenCount} skills={skills} visibleSkills={visibleSkills} cardRef={cardRef}/>
           </li>
         )}
 

@@ -15,6 +15,7 @@ export const UserCardUI: React.FC<TUserCardUIProps> = ({
   handleLike,
   type,
   likeCounter,
+  cardRef,
   likeRef,
   isLikeMessage,
 }: TUserCardUIProps) => {
@@ -23,7 +24,7 @@ export const UserCardUI: React.FC<TUserCardUIProps> = ({
   const { name, avatarPic, location, dateOfBirth } = user;
 
   return (
-    <div className={styles.card}>
+    <div ref={cardRef} className={styles.card}>
       {isLikeMessage && <span className={styles.like_info} >Сначала войдите или зарегистрируйтесь</span>}
       <div className={styles.like}>
         <span>{likeCounter}</span>
@@ -42,14 +43,14 @@ export const UserCardUI: React.FC<TUserCardUIProps> = ({
       <div className={styles.skills}>
         {type === 'learn' && (
           <>
-            <UserCardSkillUI title='Хочет научиться' skills={skillsToLearn} />
-            <UserCardSkillUI title='Может научить' skills={skillsCanTeach} />
+            <UserCardSkillUI title='Хочет научиться' skills={skillsToLearn}  cardRef={cardRef}/>
+            <UserCardSkillUI title='Может научить' skills={skillsCanTeach}  cardRef={cardRef}/>
           </>
         )}
         {type === 'teach' && (
           <>
-            <UserCardSkillUI title='Может научить' skills={skillsCanTeach} />
-            <UserCardSkillUI title='Хочет научиться' skills={skillsToLearn} />
+            <UserCardSkillUI title='Может научить' skills={skillsCanTeach} cardRef={cardRef}/>
+            <UserCardSkillUI title='Хочет научиться' skills={skillsToLearn} cardRef={cardRef}/>
           </>
         )}
       </div>

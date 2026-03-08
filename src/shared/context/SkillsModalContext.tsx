@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, type RefObject } from 'react';
 
 // Описываю тип данных в контексте
 export type TSkillsModalContext = {
