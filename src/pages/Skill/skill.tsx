@@ -19,7 +19,8 @@ export const Skill: FC = () => {
   const [showModal, setShowModal ] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const isImagesLoadedRef = useRef(false);
+  const isImagesLoadedRef = useRef<Record<string, boolean>>({});
+  const cardDetailsRef = useRef<HTMLDivElement>(null);
   const { id } = useParams();
   // пользователь
   const currentUser = useAppSelector(userSelectors.selectUser);
@@ -38,8 +39,8 @@ export const Skill: FC = () => {
   //Запрашиваем фото для конкретной карточки (если пусто то запрос с кешированем в слайс)
   useEffect(() => {
     if (userSkill)
-    if (id && !isImagesLoadedRef.current && userSkill.images.length === 0) {
-      isImagesLoadedRef.current = true // Сразу ставим флаг
+    if (id && !isImagesLoadedRef.current[id] && userSkill.images.length === 0) {
+      isImagesLoadedRef.current[id] = true // Сразу ставим флаг
       fetchUserSkillById(id)
     }
   }, [id, userSkill?.images.length]);
@@ -92,6 +93,7 @@ export const Skill: FC = () => {
         skill={userSkill}
         suggestionCards={suggestionCards}
         onSwapClick={onSwapClick}
+        cardDetailsRef = {cardDetailsRef}
       />
     </>
   );

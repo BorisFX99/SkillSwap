@@ -25,4 +25,6 @@ export type TUserCardProps = {
 
 export type TUserInfoCardProps = {
   user:TUser | null;
+  cardDetailsRef: React.RefObject<HTMLDivElement | null>;
+
 }
