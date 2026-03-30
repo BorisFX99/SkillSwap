@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { SkillsModalContext } from './SkillsModalContext';
 
 interface SkillsModalProviderProps {
@@ -16,7 +16,7 @@ export const SkillsModalProvider: FC<SkillsModalProviderProps> = ({ children }) 
         shouldModalRender,
         setShouldmodalRender,
         showProfileModal,
-        setShowProfileModal
+        setShowProfileModal,
       }}>
       {children}
     </SkillsModalContext.Provider>

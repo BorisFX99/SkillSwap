@@ -9,14 +9,18 @@ export const SkillUI: FC<SkillPageUIProps> = ({
   user,
   skill,
   suggestionCards,
-  onSwapClick
+  cardDetailsRef,
+  onSwapClick,
   }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.teacher_card}>
+      <div
+        className={styles.teacher_card}
+        ref={cardDetailsRef}
+      >
         {user &&
-        <UserInfoCard user={user}></UserInfoCard>}
+        <UserInfoCard user={user} cardDetailsRef = {cardDetailsRef}></UserInfoCard>}
       </div>
       <div className={styles.info_card}>
         {skill && <SkillDetails

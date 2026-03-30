@@ -6,7 +6,7 @@ import { useAppSelector } from '@store-hooks';
 import styles from './UserCard.module.scss';
 import { UserCardAvatar, UserCardSkillUI } from '@features/index';
 
-export const UserInfoCard: React.FC<TUserInfoCardProps> = ({user}) => {
+export const UserInfoCard: React.FC<TUserInfoCardProps> = ({user, cardDetailsRef}) => {
   if (!user) return null;
 
   const skills = useAppSelector(skillsSelectors.selectskills);
@@ -26,8 +26,8 @@ export const UserInfoCard: React.FC<TUserInfoCardProps> = ({user}) => {
         {user.aboutMe}
       </div>
       <div className={styles.skills}>
-        <UserCardSkillUI title='Может научить' skills={skillsCanTeach} />
-        <UserCardSkillUI title='Хочет научиться' skills={skillsToLearn} />
+        <UserCardSkillUI title='Может научить' skills={skillsCanTeach} cardRef={cardDetailsRef}/>
+        <UserCardSkillUI title='Хочет научиться' skills={skillsToLearn} cardRef={cardDetailsRef}/>
       </div>
     </div>
   );

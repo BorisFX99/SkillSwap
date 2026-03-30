@@ -8,4 +8,5 @@ export type TSkillAdapter = {
 export type TUserCardSkillUIProps = {
   title: 'Может научить' | 'Хочет научиться';
   skills:  TSkillAdapter[];
+  cardRef:React.RefObject<HTMLDivElement | null>;
 };

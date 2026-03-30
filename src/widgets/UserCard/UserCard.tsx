@@ -13,9 +13,10 @@ export const UserCard: React.FC<TUserCardProps> = ({
   user,
   swap
 }) => {
-  const {fetchUpdateSkillLikeApi}  = useDispatchedActions(userSkillListActions);
+  const {fetchUpdateSkillLike}  = useDispatchedActions(userSkillListActions);
   const {fetchToggleFavoriteApi} = useDispatchedActions(userActions);
   const buttonLikeRef= useRef<HTMLButtonElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null)
   const [showLikeMessage, setLikeMessage] = useState (false);
   const currnetUser = useAppSelector(userSelectors.selectUser);
   const skills = useAppSelector(skillsSelectors.selectskills);
@@ -46,10 +47,10 @@ export const UserCard: React.FC<TUserCardProps> = ({
     }
     if(currnetUser){
       if (!isInFavorites()){
-        fetchUpdateSkillLikeApi({skillId:swap._id,delta:1});
+        fetchUpdateSkillLike({skillId:swap._id,delta:1});
         fetchToggleFavoriteApi({skillId:swap._id});
       } else {
-        fetchUpdateSkillLikeApi({skillId:swap._id,delta: -1});
+        fetchUpdateSkillLike({skillId:swap._id,delta: -1});
         fetchToggleFavoriteApi({skillId:swap._id});
       }
     }
@@ -88,6 +89,7 @@ export const UserCard: React.FC<TUserCardProps> = ({
       handleLike={handleLike}
       type={swap.type}
       likeCounter = {swap.likes}
+      cardRef = {cardRef}
       likeRef={buttonLikeRef}
       isLikeMessage={showLikeMessage}
     />

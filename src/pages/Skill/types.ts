@@ -6,5 +6,6 @@ export interface SkillPageUIProps {
   user: TUser | undefined;
   skill: TUserSkill | undefined;
   suggestionCards: SkillCard[];
+  cardDetailsRef:React.RefObject<HTMLDivElement | null>;
   onSwapClick:()=>void;
 }

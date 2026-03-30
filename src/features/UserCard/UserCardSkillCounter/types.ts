@@ -4,4 +4,5 @@ export type TUserCardSkillCounterProps = {
   counter: number;
   skills?:TSkillAdapter[];
   visibleSkills?:TSkillAdapter[];
+  cardRef?:React.RefObject<HTMLDivElement | null>;
 };
